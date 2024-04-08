@@ -75,7 +75,7 @@
         "https://erickgym-server-latest.onrender.com/api/r/professores/",
         (data) => {
           const table_professores = document.querySelector("#tabela-professores");
-          data.forEach(professor => {
+          data.results.forEach(professor => {
             const tr = document.createElement("tr");
             const id = document.createElement("td");
 

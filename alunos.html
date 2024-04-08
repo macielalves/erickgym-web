@@ -75,7 +75,7 @@
         "https://erickgym-server-latest.onrender.com/api/r/alunos/",
         (data) => {
           const table_alunos = document.querySelector("#tabela-alunos");
-          data.forEach(aluno => {
+          data.results.forEach(aluno => {
             const tr = document.createElement("tr");
             const id = document.createElement("td");
 
