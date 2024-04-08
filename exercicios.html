@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ErickGym Web</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- <script src="index.js" defer></script> -->
+</head>
+
+<body>
+  <div class="container-main">
+    <nav class="nav-bar">
+      <h1>ErickGym</h1>
+      <div style="text-align: right;">
+        <details>
+          <summary>Cadastrar Novo</summary>
+          <ul>
+            <li>
+              <span><a href="cadastro/exercicio.html">Exercicio</a></span>
+            </li>
+            <li>
+              <span><a href="cadastro/aluno.html">Aluno</a></span>
+            </li>
+            <li>
+              <span><a href="cadastro/professor.html">Professor</a></span>
+            </li>
+          </ul>
+        </details>
+      </div>
+    </nav>
+    <main>
+      <div class="side-bar">
+        <ul class="side-menu">
+          <br><br>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a id="active-tab" href="exercicios.html">Exercicios</a></li>
+          <li><a href="professores.html">Professores</a></li>
+          <li><a href="alunos.html">Alunos</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <header>
+          <main>
+            <h2>Exercícios</h2>
+            <p>Gerenciamento de Exercicios.</p>
+          </main>
+          <aside>
+            <div>Gráfico semanal de usuários ativos!</div>
+          </aside>
+        </header>
+        <section>
+          <h3>Lista de Exercicios</h3>
+          <table id="tabela-exercicios">
+            <thead>
+              <tr>
+                <td colspan="1"><b>Id</b></td>
+                <td colspan="1"><b>Nome</b></td>
+                <td colspan="2"><b>Descriçãp</b></td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </section>
+        <footer>Copyright 2024</footer>
+      </div>
+    </main>
+  </div>
+  <style>
+    #tabela-exercicios {
+      table-layout: fixed;
+      border-collapse: collapse;
+      min-width: var(--w-7);
+      margin: 0 auto;
+
+      & td {
+        padding: 1rem;
+        padding-left: 2rem;
+      }
+
+      & thead {
+        background: #969696;
+      }
+    }
+  </style>
+  <script>
+    import("./js/main.js").then(({ getData }) => {
+      getData(
+        "https://erickgym-server-latest.onrender.com/api/r/exercicios/",
+        (data) => {
+          const table_exercicios = document.querySelector("#tabela-exercicios");
+          data.forEach(exercicio => {
+            const tr = document.createElement("tr");
+            const id = document.createElement("td");
+
+            id.textContent = exercicio.id;
+            const nome = document.createElement("td");
+            nome.textContent = exercicio.nome;
+            const desc = document.createElement("td");
+            desc.textContent = exercicio.descricao
+            tr.appendChild(id)
+            tr.appendChild(nome)
+            tr.appendChild(desc)
+            table_exercicios.childNodes[3].appendChild(tr);
+          });
+          console.log("Dados API:", data);
+        });
+    });
+  </script>
+</body>
+
+</html>

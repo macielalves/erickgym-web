@@ -5,11 +5,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ErickGym Web</title>
-  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- <script src="index.js" defer></script> -->
 </head>
 
 <body>
-  <main>
+  <div class="container-main">
+    <nav class="nav-bar">
+      <h1>ErickGym</h1>
+    </nav>
+    <main>
+      <div class="side-bar">
+        <ul class="side-menu">
+          <br><br>
+          <li><a id="active-tab" href="index.html">Dashboard</a></li>
+          <li><a href="exercicios.html">Exercicios</a></li>
+          <li><a href="professores.html">Professores</a></li>
+          <li><a href="alunos.html">Alunos</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <header>
+          <main>
+            <h2>ErickGym DashBoard</h2>
+            <p>Página inicial do dashboard.</p>
+          </main>
+          <aside>
+            <div>Gráfico semanal de usuários ativos!</div>
+          </aside>
+        </header>
+        <section>
+          <h3>Estatisticas</h3>
+          <div class="cards-container">
+            <div class="card">
+              <h2 class="card-title">Titulo aqui</h2>
+              <div class="card-body">
+                <p>Texto aqui</p>
+                <div class="card-side-details">Detalhes aqui/informação</div>
+              </div>
+              <div class="card-footer">informações sobre mais dados</div>
+            </div>
+          </div>
+        </section>
+        <footer>Copyright 2024</footer>
+      </div>
+    </main>
+  </div>
+  <!-- <main>
     <header>
       <h1>ErickWeb Dashboard</h1>
     </header>
@@ -26,7 +68,7 @@
       <ol id="lst-exercicios">
       </ol>
     </section>
-  </main>
+  </main> -->
 </body>
 
 </html>

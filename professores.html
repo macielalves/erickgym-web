@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ErickGym Web</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- <script src="index.js" defer></script> -->
+</head>
+
+<body>
+  <div class="container-main">
+    <nav class="nav-bar">
+      <h1>ErickGym</h1>
+    </nav>
+    <main>
+      <div class="side-bar">
+        <ul class="side-menu">
+          <br><br>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="professors.html">professors</a></li>
+          <li><a id="active-tab" href="professores.html">Professores</a></li>
+          <li><a href="alunos.html">Alunos</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <header>
+          <main>
+            <h2>Professores</h2>
+            <p>Gerenciamento de professores.</p>
+          </main>
+          <aside>
+            <div>Gráfico semanal de usuários ativos!</div>
+          </aside>
+        </header>
+        <section>
+          <h3>Lista de Professores</h3>
+          <table id="tabela-professores">
+            <thead>
+              <tr>
+                <td><b>Id</b></td>
+                <td><b>Nome</b></td>
+                <td><b>Descriçãp</b></td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </section>
+        <footer>Copyright 2024</footer>
+      </div>
+    </main>
+  </div>
+  <style>
+    #tabela-professores {
+      table-layout: fixed;
+      border-collapse: collapse;
+      width: var(--w-7);
+      margin: 0 auto;
+
+      & td {
+        padding: 1rem;
+        padding-left: 2rem;
+      }
+
+      & thead {
+        background: #969696;
+      }
+    }
+  </style>
+  <script>
+    import("./js/main.js").then(({ getData }) => {
+      getData(
+        "https://erickgym-server-latest.onrender.com/api/r/professores/",
+        (data) => {
+          const table_professores = document.querySelector("#tabela-professores");
+          data.forEach(professor => {
+            const tr = document.createElement("tr");
+            const id = document.createElement("td");
+
+            id.textContent = professor.id;
+            const nome = document.createElement("td");
+            nome.textContent = professor.nome;
+            const desc = document.createElement("td");
+            desc.textContent = professor.descricao
+            tr.appendChild(id)
+            tr.appendChild(nome)
+            tr.appendChild(desc)
+            table_professores.childNodes[3].appendChild(tr);
+          });
+          console.log("Dados API:", data);
+        });
+    });
+  </script>
+</body>
+
+</html>

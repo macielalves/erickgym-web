@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ErickGym Web</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- <script src="index.js" defer></script> -->
+</head>
+
+<body>
+  <div class="container-main">
+    <nav class="nav-bar">
+      <h1>ErickGym</h1>
+    </nav>
+    <main>
+      <div class="side-bar">
+        <ul class="side-menu">
+          <br><br>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="exercicios.html">Exercicios</a></li>
+          <li><a href="professores.html">Professores</a></li>
+          <li><a id="active-tab" href="alunos.html">Alunos</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <header>
+          <main>
+            <h2>Alunos</h2>
+            <p>Gerenciamento de Alunos</p>
+          </main>
+          <aside>
+            <div>Gráfico semanal de usuários ativos!</div>
+          </aside>
+        </header>
+        <section>
+          <h3>Lista de Alunos</h3>
+          <span class="loading"><span></span><span>Carregando...</span></span>
+          <table id="tabela-alunos">
+            <thead>
+              <tr>
+                <td><b>id</b></td>
+                <td><b>Nome</b></td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </section>
+        <footer>Copyright 2024</footer>
+      </div>
+    </main>
+  </div>
+  <style>
+    #tabela-alunos {
+      table-layout: fixed;
+      border-collapse: collapse;
+      width: var(--w-7);
+      margin: 0 auto;
+
+      & td {
+        padding: 1rem;
+        padding-left: 2rem;
+      }
+
+      & thead {
+        background: #969696;
+      }
+    }
+  </style>
+  <script>
+    import("./js/main.js").then(({ getData }) => {
+      getData(
+        "https://erickgym-server-latest.onrender.com/api/r/alunos/",
+        (data) => {
+          const table_alunos = document.querySelector("#tabela-alunos");
+          data.forEach(aluno => {
+            const tr = document.createElement("tr");
+            const id = document.createElement("td");
+
+            id.textContent = aluno.id;
+            const nome = document.createElement("td");
+            nome.textContent = aluno.nome;
+            tr.appendChild(id)
+            tr.appendChild(nome)
+            table_alunos.childNodes[3].appendChild(tr);
+          });
+          console.log("Dados API:", data);
+        });
+    });
+  </script>
+</body>
+
+</html>
