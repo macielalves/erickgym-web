@@ -13,13 +13,25 @@
   <div class="container-main">
     <nav class="nav-bar">
       <h1>ErickGym</h1>
+      <ul>
+        <li>
+          <a href="/auth/singin/">
+            <div>Sing in</div>
+          </a>
+        </li>
+        <li>
+          <a href="/auth/singup/">
+            <div>Sing up</div>
+          </a>
+        </li>
+      </ul>
     </nav>
     <main>
       <div class="side-bar">
         <ul class="side-menu">
           <br><br>
-          <li><a id="active-tab" href="/index.html">Dashboard</a></li>
-          <li><a href="/exercicios.html">Exercicios</a></li>
+          <li><a href="/index.html">Dashboard</a></li>
+          <li><a id="active-tab" href="/exercicios.html">Exercicios</a></li>
           <li><a href="/professores.html">Professores</a></li>
           <li><a href="/alunos.html">Alunos</a></li>
         </ul>
@@ -36,13 +48,17 @@
         </header>
         <section>
           <main>
-            <section>
-              <h2>Novo Exercício</h2>
+            <section id="cadastrar-exercicio">
               <form>
-                <input id="cx-nome" type="text" autocomplete="off" placeholder="Nome..."><br /><br />
-                <textarea name="cx-descricao" id="cx-descricao" cols="30" rows="3"
-                  placeholder="Descrição.."></textarea><br />
-                <button id="btn-cadastrar">Cadastrar</button>
+                <fieldset>
+                  <legend>
+                    <h2>Novo Exercício</h2>
+                  </legend>
+                  <input id="cx-nome" type="text" autocomplete="off" placeholder="Nome..."><br /><br />
+                  <textarea name="cx-descricao" id="cx-descricao" cols="30" rows="3"
+                    placeholder="Descrição.."></textarea><br />
+                  <button id="btn-cadastrar">Cadastrar</button>
+                </fieldset>
               </form>
             </section>
             <section>
@@ -50,9 +66,9 @@
               <table id="tabela-exercicios">
                 <thead>
                   <tr>
-                    <td colspan="1"><b>Id</b></td>
+                    <th colspan="1"><b>Id</b></th>
                     <td colspan="1"><b>Nome</b></td>
-                    <td colspan="2"><b>Descriçãp</b></td>
+                    <th colspan="2"><b>Descriçãp</b></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -72,7 +88,8 @@
       min-width: var(--w-7);
       margin: 0 auto;
 
-      & td {
+      & td,
+      th {
         padding: 1rem;
         padding-left: 2rem;
       }

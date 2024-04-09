@@ -77,12 +77,11 @@ body {
   align-items: center;
   width: var(--w-2);
   height: var(--h-1);
-  text-align: left;
   padding-left: 1.5rem;
   background-color: #474747;
   color: #d1d1d1;
   text-decoration: none;
-  font-size: larger;
+  font-size: 1.2rem;
 }
 
 .side-bar a:hover {
@@ -98,6 +97,7 @@ body {
   top: var(--h-1);
   left: var(--w-2);
   width: calc(var(--w-8) - 5vw);
+  min-height: var(--h-10);
   font-size: large;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -108,6 +108,7 @@ body {
 .content header {
   display: flex;
   flex-direction: row;
+  min-height: 200px;
   background-color: #e3eea3;
 }
 
@@ -158,6 +159,11 @@ body {
 }
 
 .content footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d1d1d;
+  color: #eee;
   text-align: center;
   height: var(--h-3);
 }
@@ -188,16 +194,50 @@ body {
 
 @media screen and (max-width: 910px) {
   .side-bar {
-    position: static;
+    width: var(--w-10);
+    height: max-content;
+    top: var(--h-1);
+    padding-left: 0;
+    & ul {
+      display: flex;
+      justify-content: center;
+      width: inherit;
+    }
+    & ul li {
+      position: relative;
+      display: inline-flex;
+    }
+    & a {
+      padding: 0 1rem;
+      width: 25vw;
+    }
   }
 
   .content {
-    position: static;
+    width: var(--w-10);
+    top: var(--h-2);
+    left: 0;
   }
   .content header {
     flex-direction: column;
   }
   .content section .cards-container {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
+}
+
+@container (width > 100px) {
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+/* PAGINAS DE CADASTRO */
+#cadastrar-exercicio {
+  position: relative;
+  padding: 0 2rem;
+}
+
+#cadastrar-exercicio form {
 }
